@@ -1,2 +1,4 @@
-# world-scrutiny
-Tagline - "There is so much to know". My Website.
+# World Scrutiny
+*There is so much to know*
+
+This my website.
