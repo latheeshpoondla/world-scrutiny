@@ -1,35 +1,49 @@
-# World Scrutiny(🚧Under Construction🏗️)  
+# World Scrutiny
 
-*There is so much to know*  
+*There is so much to know*
+
 ![World Scrutiny](public/WS_Media/Logo/WorldScrutiny1_no_bg.png)
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+The World Scrutiny website, built with Next.js 16, React Three Fiber, Framer Motion and Tailwind CSS v4.
 
-## Getting Started
-
-First, run the development server:
+## Run it
 
 ```bash
+npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Editing content
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| What | Where |
+| --- | --- |
+| Blog posts | `content/posts/<slug>.md` (Markdown + frontmatter; the file name becomes the URL) |
+| Projects | `content/projects.ts` |
+| Testimonials | `content/testimonials.ts` (the page shows an invitation while empty) |
+| Name, socials, email, nav, intro video | `lib/site.ts` |
 
-## Learn More
+A new post looks like this:
 
-To learn more about Next.js, take a look at the following resources:
+```md
+---
+title: "My new post"
+date: "2026-10-20"
+excerpt: "One or two lines for the cards."
+cover: "/WS_Media/Post%20Media/image.jpeg"
+category: "Self Improvement"
+tags: ["Habits", "Focus"]
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Write the post in Markdown. `##` and `###` headings appear in the table of contents.
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Set `NEXT_PUBLIC_SITE_URL` to your real domain when deploying (used by SEO tags, the sitemap and `/feed.xml`).
 
-## Deploy on Vercel
+## Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `app/` holds the routes: home, blog, blog posts, about, projects, testimonials, contact, 404, sitemap, robots and the RSS feed
+- `components/three/` holds the 3D scenes (holographic globe with the growing plant, golden network orb), loaded only while on screen
+- `components/fx/` holds the effects: tilt cards, reveals, parallax, smooth scroll, particles and the cursor glow
+- `lib/posts.ts` is the Markdown loader
